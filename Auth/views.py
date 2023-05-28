@@ -1,9 +1,10 @@
-from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+
+from .models import CustomerUser
 
 def index(request):
     if request.method == "POST":
@@ -25,7 +26,7 @@ def index(request):
             password2 = request.POST['repeat_password']
             if password == password2:
                 # Создаем нового пользователя
-                user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name)
+                user = CustomerUser.objects.create_user(username=username, password=password, email=email, first_name=first_name)
                 user.save()
                 login(request, user)
                 return redirect('profile')
@@ -45,5 +46,3 @@ def profile(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
-
-

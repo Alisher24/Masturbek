@@ -52,6 +52,11 @@
                     <input type="text" name="edit_phone" value="{{ user.phone_number }}" placeholder="Ваш номер">
                     <label>Почта</label>
                     <input type="text" name="edit_email" value="{{ user.email }}" placeholder="Ваша почта">
+
+                </div>
+                <div class="ModalWindowBlock_Two">
+                    <div class="ModalWindowBlock_Two_Photo"></div>
+                    <input type="file">
                 </div>
                 <button type="submit" class="PostBtn">РЕДАКТИРОВАТЬ</button>
             </form>
@@ -67,9 +72,9 @@
                 <div class="HeaderProfile_Block">
                     <div class="HeaderProfile_Block_One">
                         <div class="UserCard">
-                            <img src="{% static 'imgs/shaverma.jpg'%}" alt="фото юзера">
+                            <img src="{% static user.photo.url %}" alt="фото юзера">
                             <div class="UserCardBody">
-                              
+
                               <a href="#" class="btn btn-primary center" id="EditProfile">РЕДАКТИРОВАТЬ</a>
                             </div>
                         </div>
@@ -77,9 +82,9 @@
                     <div class="HeaderProfile_Block_Two">
                         <ul>
                             <li><span>имя</span> {{ user.first_name }}</li>
-                            <li><span>номер</span> {{ user.phone_number }}</li>
+                            <li><span>номер</span> {{ user.phone_number }} </li>
                             <li><span>почта</span> {{ user.email }}</li>
-                            <li><span>рецептов</span> {{ user.recipe_count }}</li>
+                            <li><span>рецептов</span> </li>
                         </ul>
                     </div>
                 </div>
