@@ -41,7 +41,7 @@
     </div>
     <div class="ShowModalWindow" id = "Profile">
         <div class="ModalWindow">
-            <form action="{% url 'edit_profile' %}" method="POST">
+            <form action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="modal_close">X</div>
                 <h2>РЕДАКТИРОВАНИЕ ПРОФИЛЯ</h2>
@@ -52,11 +52,14 @@
                     <input type="text" name="edit_phone" value="{{ user.phone_number }}" placeholder="Ваш номер">
                     <label>Почта</label>
                     <input type="text" name="edit_email" value="{{ user.email }}" placeholder="Ваша почта">
-
                 </div>
                 <div class="ModalWindowBlock_Two">
-                    <div class="ModalWindowBlock_Two_Photo"></div>
-                    <input type="file">
+{#                    <div class="ModalWindowBlock_Two_Photo"></div>#}
+                    <input type="file" name="edit_photo">
+                    {% if user.photo %}
+                        <p>Текущее фото:</p>
+                        <img src="{{ user.photo.url }}" alt="фото юзера">
+                    {% endif %}
                 </div>
                 <button type="submit" class="PostBtn">РЕДАКТИРОВАТЬ</button>
             </form>
@@ -72,7 +75,7 @@
                 <div class="HeaderProfile_Block">
                     <div class="HeaderProfile_Block_One">
                         <div class="UserCard">
-                            <img src="{% static user.photo.url %}" alt="фото юзера">
+                            <img src="{{ user.photo.url }}" alt="фото юзера">
                             <div class="UserCardBody">
 
                               <a href="#" class="btn btn-primary center" id="EditProfile">РЕДАКТИРОВАТЬ</a>
