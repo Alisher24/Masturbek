@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+import Profile
 from .models import CustomerUser
 
 def index(request):
@@ -41,7 +42,7 @@ def profile(request):
     context = {
         'user': user,
     }
-    return render(request, 'Profile/Profile.html', context)
+    return Profile.views.index(request)
 
 def logout_view(request):
     logout(request)

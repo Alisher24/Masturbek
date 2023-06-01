@@ -47,127 +47,155 @@
                 
                 <div class="col-12">
                     <div class="mainContent_Recepies">
+                        {% for recipe in recipes %}
                         <div class="card" style="width: 18rem;">
-                            <img src="{% static 'imgs/shaverma.jpg'%}" class="card-img-top" alt="картинка еды">
+                            <img src="{{ recipe.photo.url }}" class="card-img-top" alt="картинка еды">
                             <div class="card-body">
-                              <h5 class="card-title">Заголовок карточки</h5>
-                              <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                              <div class="RecipeBlock_ShortInfo_Statistics">
-                                <div class="RecipeBlock_ShortInfo_Statistics_Likes">
-                                  <p><b>12</b></p>
-                                  <img src="{% static 'icons/heart.png'%}" alt="картинка лайка" class="Usuall">
-                                  <img src="{% static 'icons/Active heart.png'%}" alt="картинка лайка" class="Active">
-                                </div>
-                                <div class="RecipeBlock_ShortInfo_Statistics_Comments">
-                                  <p><b>1</b></p>
-                                  <img src="{% static 'icons/speech-bubble.png' %}" alt="картинка комментариев">
-                                </div>
-                                <div class="RecipeBlock_ShortInfo_Statistics_Saves">
-                                  <p><b>0</b></p>
-                                  <img src="{% static 'icons/save-instagram.png'%}" alt="картинка лайка" class="Usuall">
-                                  <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка лайка" class="Active">
-                                </div>
-                              </div>
-                              <a href="#" class="btn btn-primary center">Подробнее</a>
+                                <h5 class="card-title">{{ recipe.title }}</h5>
+                                <p class="card-text">{{ recipe.description }}</p>
+                                <div class="RecipeBlock_ShortInfo_Statistics">
+                                    <div class="RecipeBlock_ShortInfo_Statistics_Likes">
+                                      <p><b>12</b></p>
+                                      <img src="{% static 'icons/heart.png'%}" alt="картинка лайка" class="Usuall">
+                                      <img src="{% static 'icons/Active heart.png'%}" alt="картинка лайка" class="Active">
+                                    </div>
+                                    <div class="RecipeBlock_ShortInfo_Statistics_Comments">
+                                      <p><b>1</b></p>
+                                      <img src="{% static 'icons/speech-bubble.png' %}" alt="картинка комментариев">
+                                    </div>
+                                    <div class="RecipeBlock_ShortInfo_Statistics_Saves">
+                                      <p><b>0</b></p>
+                                      <img src="{% static 'icons/save-instagram.png'%}" alt="картинка лайка" class="Usuall">
+                                      <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка лайка" class="Active">
+                                    </div>
+                                  </div>
+                                <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
                             </div>
                         </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="{% static 'imgs/shaverma.jpg'%}" class="card-img-top" alt="картинка еды">
-                            <div class="card-body">
-                              <h5 class="card-title">Заголовок карточки</h5>
-                              <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                              <div class="RecipeBlock_ShortInfo_Statistics">
-                                <div class="RecipeBlock_ShortInfo_Statistics_Likes">
-                                  <p><b>12</b></p>
-                                  <img src="{% static 'icons/heart.png'%}" alt="картинка лайка" class="Usuall">
-                                  <img src="{% static 'icons/Active heart.png'%}" alt="картинка лайка" class="Active">
-                                </div>
-                                <div class="RecipeBlock_ShortInfo_Statistics_Comments">
-                                  <p><b>1</b></p>
-                                  <img src="{% static 'icons/speech-bubble.png' %}" alt="картинка комментариев">
-                                </div>
-                                <div class="RecipeBlock_ShortInfo_Statistics_Saves">
-                                  <p><b>0</b></p>
-                                  <img src="{% static 'icons/save-instagram.png'%}" alt="картинка лайка" class="Usuall">
-                                  <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка лайка" class="Active">
-                                </div>
-                              </div>
-                              <a href="#" class="btn btn-primary center">Подробнее</a>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="{% static 'imgs/shaverma.jpg'%}" class="card-img-top" alt="картинка еды">
-                            <div class="card-body">
-                              <h5 class="card-title">Заголовок карточки</h5>
-                              <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                              <div class="RecipeBlock_ShortInfo_Statistics">
-                                <div class="RecipeBlock_ShortInfo_Statistics_Likes">
-                                  <p><b>12</b></p>
-                                  <img src="{% static 'icons/heart.png'%}" alt="картинка лайка" class="Usuall">
-                                  <img src="{% static 'icons/Active heart.png'%}" alt="картинка лайка" class="Active">
-                                </div>
-                                <div class="RecipeBlock_ShortInfo_Statistics_Comments">
-                                  <p><b>1</b></p>
-                                  <img src="{% static 'icons/speech-bubble.png' %}" alt="картинка комментариев">
-                                </div>
-                                <div class="RecipeBlock_ShortInfo_Statistics_Saves">
-                                  <p><b>0</b></p>
-                                  <img src="{% static 'icons/save-instagram.png'%}" alt="картинка лайка" class="Usuall">
-                                  <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка лайка" class="Active">
-                                </div>
-                              </div>
-                              <a href="#" class="btn btn-primary center">Подробнее</a>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="{% static 'imgs/shaverma.jpg'%}" class="card-img-top" alt="картинка еды">
-                            <div class="card-body">
-                              <h5 class="card-title">Заголовок карточки</h5>
-                              <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                              <div class="RecipeBlock_ShortInfo_Statistics">
-                                <div class="RecipeBlock_ShortInfo_Statistics_Likes">
-                                  <p><b>12</b></p>
-                                  <img src="{% static 'icons/heart.png'%}" alt="картинка лайка" class="Usuall">
-                                  <img src="{% static 'icons/Active heart.png'%}" alt="картинка лайка" class="Active">
-                                </div>
-                                <div class="RecipeBlock_ShortInfo_Statistics_Comments">
-                                  <p><b>1</b></p>
-                                  <img src="{% static 'icons/speech-bubble.png' %}" alt="картинка комментариев">
-                                </div>
-                                <div class="RecipeBlock_ShortInfo_Statistics_Saves">
-                                  <p><b>0</b></p>
-                                  <img src="{% static 'icons/save-instagram.png'%}" alt="картинка лайка" class="Usuall">
-                                  <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка лайка" class="Active">
-                                </div>
-                              </div>
-                              <a href="#" class="btn btn-primary center">Подробнее</a>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="{% static 'imgs/shaverma.jpg'%}" class="card-img-top" alt="картинка еды">
-                            <div class="card-body">
-                              <h5 class="card-title">Заголовок карточки</h5>
-                              <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>
-                              <div class="RecipeBlock_ShortInfo_Statistics">
-                                <div class="RecipeBlock_ShortInfo_Statistics_Likes">
-                                  <p><b>12</b></p>
-                                  <img src="{% static 'icons/heart.png'%}" alt="картинка лайка" class="Usuall">
-                                  <img src="{% static 'icons/Active heart.png'%}" alt="картинка лайка" class="Active">
-                                </div>
-                                <div class="RecipeBlock_ShortInfo_Statistics_Comments">
-                                  <p><b>1</b></p>
-                                  <img src="{% static 'icons/speech-bubble.png' %}" alt="картинка комментариев">
-                                </div>
-                                <div class="RecipeBlock_ShortInfo_Statistics_Saves">
-                                  <p><b>0</b></p>
-                                  <img src="{% static 'icons/save-instagram.png'%}" alt="картинка лайка" class="Usuall">
-                                  <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка лайка" class="Active">
-                                </div>
-                              </div>
-                              <a href="#" class="btn btn-primary center">Подробнее</a>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
+{#                    <div class="mainContent_Recepies">#}
+{#                        <div class="card" style="width: 18rem;">#}
+{#                            <img src="{% static 'imgs/shaverma.jpg'%}" class="card-img-top" alt="картинка еды">#}
+{#                            <div class="card-body">#}
+{#                              <h5 class="card-title">Заголовок карточки</h5>#}
+{#                              <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>#}
+{#                              <div class="RecipeBlock_ShortInfo_Statistics">#}
+{#                                <div class="RecipeBlock_ShortInfo_Statistics_Likes">#}
+{#                                  <p><b>12</b></p>#}
+{#                                  <img src="{% static 'icons/heart.png'%}" alt="картинка лайка" class="Usuall">#}
+{#                                  <img src="{% static 'icons/Active heart.png'%}" alt="картинка лайка" class="Active">#}
+{#                                </div>#}
+{#                                <div class="RecipeBlock_ShortInfo_Statistics_Comments">#}
+{#                                  <p><b>1</b></p>#}
+{#                                  <img src="{% static 'icons/speech-bubble.png' %}" alt="картинка комментариев">#}
+{#                                </div>#}
+{#                                <div class="RecipeBlock_ShortInfo_Statistics_Saves">#}
+{#                                  <p><b>0</b></p>#}
+{#                                  <img src="{% static 'icons/save-instagram.png'%}" alt="картинка лайка" class="Usuall">#}
+{#                                  <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка лайка" class="Active">#}
+{#                                </div>#}
+{#                              </div>#}
+{#                              <a href="#" class="btn btn-primary center">Подробнее</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="card" style="width: 18rem;">#}
+{#                            <img src="{% static 'imgs/shaverma.jpg'%}" class="card-img-top" alt="картинка еды">#}
+{#                            <div class="card-body">#}
+{#                              <h5 class="card-title">Заголовок карточки</h5>#}
+{#                              <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>#}
+{#                              <div class="RecipeBlock_ShortInfo_Statistics">#}
+{#                                <div class="RecipeBlock_ShortInfo_Statistics_Likes">#}
+{#                                  <p><b>12</b></p>#}
+{#                                  <img src="{% static 'icons/heart.png'%}" alt="картинка лайка" class="Usuall">#}
+{#                                  <img src="{% static 'icons/Active heart.png'%}" alt="картинка лайка" class="Active">#}
+{#                                </div>#}
+{#                                <div class="RecipeBlock_ShortInfo_Statistics_Comments">#}
+{#                                  <p><b>1</b></p>#}
+{#                                  <img src="{% static 'icons/speech-bubble.png' %}" alt="картинка комментариев">#}
+{#                                </div>#}
+{#                                <div class="RecipeBlock_ShortInfo_Statistics_Saves">#}
+{#                                  <p><b>0</b></p>#}
+{#                                  <img src="{% static 'icons/save-instagram.png'%}" alt="картинка лайка" class="Usuall">#}
+{#                                  <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка лайка" class="Active">#}
+{#                                </div>#}
+{#                              </div>#}
+{#                              <a href="#" class="btn btn-primary center">Подробнее</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="card" style="width: 18rem;">#}
+{#                            <img src="{% static 'imgs/shaverma.jpg'%}" class="card-img-top" alt="картинка еды">#}
+{#                            <div class="card-body">#}
+{#                              <h5 class="card-title">Заголовок карточки</h5>#}
+{#                              <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>#}
+{#                              <div class="RecipeBlock_ShortInfo_Statistics">#}
+{#                                <div class="RecipeBlock_ShortInfo_Statistics_Likes">#}
+{#                                  <p><b>12</b></p>#}
+{#                                  <img src="{% static 'icons/heart.png'%}" alt="картинка лайка" class="Usuall">#}
+{#                                  <img src="{% static 'icons/Active heart.png'%}" alt="картинка лайка" class="Active">#}
+{#                                </div>#}
+{#                                <div class="RecipeBlock_ShortInfo_Statistics_Comments">#}
+{#                                  <p><b>1</b></p>#}
+{#                                  <img src="{% static 'icons/speech-bubble.png' %}" alt="картинка комментариев">#}
+{#                                </div>#}
+{#                                <div class="RecipeBlock_ShortInfo_Statistics_Saves">#}
+{#                                  <p><b>0</b></p>#}
+{#                                  <img src="{% static 'icons/save-instagram.png'%}" alt="картинка лайка" class="Usuall">#}
+{#                                  <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка лайка" class="Active">#}
+{#                                </div>#}
+{#                              </div>#}
+{#                              <a href="#" class="btn btn-primary center">Подробнее</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="card" style="width: 18rem;">#}
+{#                            <img src="{% static 'imgs/shaverma.jpg'%}" class="card-img-top" alt="картинка еды">#}
+{#                            <div class="card-body">#}
+{#                              <h5 class="card-title">Заголовок карточки</h5>#}
+{#                              <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>#}
+{#                              <div class="RecipeBlock_ShortInfo_Statistics">#}
+{#                                <div class="RecipeBlock_ShortInfo_Statistics_Likes">#}
+{#                                  <p><b>12</b></p>#}
+{#                                  <img src="{% static 'icons/heart.png'%}" alt="картинка лайка" class="Usuall">#}
+{#                                  <img src="{% static 'icons/Active heart.png'%}" alt="картинка лайка" class="Active">#}
+{#                                </div>#}
+{#                                <div class="RecipeBlock_ShortInfo_Statistics_Comments">#}
+{#                                  <p><b>1</b></p>#}
+{#                                  <img src="{% static 'icons/speech-bubble.png' %}" alt="картинка комментариев">#}
+{#                                </div>#}
+{#                                <div class="RecipeBlock_ShortInfo_Statistics_Saves">#}
+{#                                  <p><b>0</b></p>#}
+{#                                  <img src="{% static 'icons/save-instagram.png'%}" alt="картинка лайка" class="Usuall">#}
+{#                                  <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка лайка" class="Active">#}
+{#                                </div>#}
+{#                              </div>#}
+{#                              <a href="#" class="btn btn-primary center">Подробнее</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="card" style="width: 18rem;">#}
+{#                            <img src="{% static 'imgs/shaverma.jpg'%}" class="card-img-top" alt="картинка еды">#}
+{#                            <div class="card-body">#}
+{#                              <h5 class="card-title">Заголовок карточки</h5>#}
+{#                              <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карты.</p>#}
+{#                              <div class="RecipeBlock_ShortInfo_Statistics">#}
+{#                                <div class="RecipeBlock_ShortInfo_Statistics_Likes">#}
+{#                                  <p><b>12</b></p>#}
+{#                                  <img src="{% static 'icons/heart.png'%}" alt="картинка лайка" class="Usuall">#}
+{#                                  <img src="{% static 'icons/Active heart.png'%}" alt="картинка лайка" class="Active">#}
+{#                                </div>#}
+{#                                <div class="RecipeBlock_ShortInfo_Statistics_Comments">#}
+{#                                  <p><b>1</b></p>#}
+{#                                  <img src="{% static 'icons/speech-bubble.png' %}" alt="картинка комментариев">#}
+{#                                </div>#}
+{#                                <div class="RecipeBlock_ShortInfo_Statistics_Saves">#}
+{#                                  <p><b>0</b></p>#}
+{#                                  <img src="{% static 'icons/save-instagram.png'%}" alt="картинка лайка" class="Usuall">#}
+{#                                  <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка лайка" class="Active">#}
+{#                                </div>#}
+{#                              </div>#}
+{#                              <a href="#" class="btn btn-primary center">Подробнее</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
                 </div>
             </div>
         </div>
