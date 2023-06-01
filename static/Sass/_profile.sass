@@ -1,0 +1,86 @@
+//Страница пользователя
+.HeaderProfile
+    position: relative
+    background-color:#FFA500
+    height: 300px
+    width: 100%
+    padding-top: 40px
+    &_Block
+        display: flex
+        align-items: center
+        background-color:#ffffff
+        width: 100%
+        height: 400px
+        margin: 0 auto
+        margin-bottom: 40px
+        &_One
+            width: 100%
+        &_Two
+            
+            width:100%
+            font-size: 18px
+            ul
+                padding: 0
+                margin: 0
+                li
+                    list-style: none
+                    font-size: 18px
+                    font-family: "Roboto"
+                    b
+                        color: gray
+                    span
+                        font-weight: 400
+
+                        
+                        
+    &_Post
+        position: absolute
+        bottom: -156px
+        left: 50%
+        transform: translate(-50%)
+        a
+            background-color: #74D474
+            &:hover
+                background-color:#ffffff
+                color: #74D474
+                border: #74D474 solid 1px
+
+.UserRecepies
+    padding: 180px 0 40px 0
+    &_Header
+        margin: 0 auto
+        margin-bottom: 40px
+        h1
+            text-align: center
+    &_Recepies
+        display: flex
+        gap:40px
+        flex-wrap: wrap
+        justify-content: center
+        // тут ошибка
+.UserCard
+    height: 350px
+    padding-bottom: 20px
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    img
+        top: 50%
+        left: 50%
+        border-radius: 20px 20px 0 0
+        width: 30rem
+        height: 230px
+        object-fit: cover
+    a
+        width: 182px
+        height: 40px
+        font-size: 18px
+        color: #ffffff
+        &:hover
+            width: 182px
+            height: 40px
+            font-size: 18px
+            color: #FFA500
+            background-color:#ffffff
+            border: #FFA500 solid 1px
+

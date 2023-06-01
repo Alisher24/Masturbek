@@ -1,0 +1,81 @@
+// Здесь модальные окна
+.ShowModalWindow
+    position: absolute
+    width: 100%
+    height: 100%
+    background: rgba(0, 0, 0, 0.5)
+    z-index: 1
+    display: none
+    .ModalWindow
+        position: relative
+        margin: 0 auto
+        margin-top: 40px
+        width: 80%
+        border-radius: 5px
+        padding: 10px
+        height: 400px
+        background-color: white
+        h2
+            text-align: center
+        .modal_close
+            display: inline
+            font-size: 20px
+            float: right
+            font-size: 30px
+
+.ModalWindowBlock
+    padding-top: 20px
+    margin: 0 auto
+    display: flex
+    justify-content: space-between
+    width: 686px
+    &_One
+        width: 200px
+        select
+            margin-top: 5px
+    &_Two
+        width: 400px
+        display: flex
+        flex-direction: column
+        &_Photo
+            width: 400px
+            background-color:#222222
+            height: 140px
+            margin-bottom: 20px
+        &_ChangePhoto
+            width: 230px
+            img
+                top: 50%
+                left: 50%
+                border-radius: 20px 20px 0 0
+                width: 16rem
+                height: 200px
+                -o-object-fit: cover
+                object-fit: cover
+
+.MainContentOfAuth_Header
+    text-align: center
+
+
+
+.ModalWindowBlock_Profile
+    padding-top: 20px
+    width: 260px
+    input
+        height: 44px
+        width: 100%
+
+.PostBtn
+    display: block
+    margin: 0 auto
+    width: 180px
+    height: 40px
+    font-size: 18px
+    background-color:#F82323
+    color:#ffffff
+    border: none
+    border-radius: 5px
+    position: absolute
+    bottom: 10px
+    left: 50%
+    transform: translate(-50%)

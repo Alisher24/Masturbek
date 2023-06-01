@@ -1,0 +1,141 @@
+.HeaderOfRecipePage
+    background: #FFA500
+    width: 100%
+    padding: 40px 40px 10px 40px
+    min-height: 480px
+    a
+        text-decoration: none
+        color: #ffffff
+        font-family: "Gilroy"
+        font-weight: 400
+.RecipeBlock
+    display: flex
+    gap: 40px
+    &_Img
+        width: 50rem
+        height: 100%
+        img
+            top: 50%
+            left: 50%
+            width: 50rem
+            height: 400px
+            object-fit: cover
+    &_ShortInfo
+        h2
+            font-size: 32px
+            font-family: "Gilroy"
+            font-weight: 700
+        ul
+            padding: 0
+            margin: 0
+            li
+                margin-top: 10px
+                list-style: none
+                font-size: 22px
+                font-family: "Roboto"
+                span
+                    color: #ffffff
+        &_Statistics
+            margin-top: 10px
+            display: flex
+            gap: 15px
+            &_Likes
+                display: flex
+                gap: 10px
+                align-items: center
+                p
+                    margin: 0
+                    padding: 0
+                    b
+                        font-size: 22px
+                        color: #ffffff
+                .Active
+                    display: none
+                    width: 30px
+                    height: 30px
+                .Usuall
+                    display: block
+                    width: 30px
+                    height: 30px
+            &_Comments
+                display: flex
+                gap: 10px
+                align-items: center
+                p
+                    margin: 0
+                    padding: 0
+                    b
+                        font-size: 22px
+                        color: #ffffff
+                img
+                    width: 30px
+                    height: 30px
+            &_Saves
+                display: flex
+                gap: 10px
+                align-items: center
+                p
+                    margin: 0
+                    padding: 0
+                    b
+                        font-size: 22px
+                        color: #ffffff
+                .Active
+                    display: none
+                    width: 30px
+                    height: 30px
+                .Usuall
+                    display: block
+                    width: 30px
+                    height: 30px
+.Coments
+    padding: 40px
+    &_Header
+        margin: 0 auto
+        margin-bottom: 20px
+        h2
+            text-align: center
+    &_Block
+        &_Post
+            display: flex
+            justify-content: center
+            margin-bottom: 20px
+            form
+                display: flex
+                gap: 10px
+                input
+                    min-height: 40px
+                    width: 400px
+                .PostСomment
+                    font-family: "Roboto"
+                    width: 180px
+                    height: 40px
+                    font-size: 18px
+                    background-color:#F82323
+                    color:#ffffff
+                    border: none
+                    border-radius: 5px
+    hr
+        width: 200px
+        margin: 0 auto
+    &_Coment
+        display: flex
+        gap: 10px
+        align-items: center
+        vertical-align: center
+        img
+            border-radius: 100%
+            width: 4rem
+            height: 60px
+            top: 50%
+            left: 50%
+            object-fit: cover
+        .ComentText
+            font-size: 18px
+            font-family: 'Roboto'
+            margin-bottom: 0
+            padding-bottom: 0
+        .ComentData
+            color: gray
+            margin-bottom: 0
+            padding-bottom: 0
