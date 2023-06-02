@@ -62,6 +62,29 @@ if(EditProfile){
         });
 }
 
+// $.ajax({
+//   url: "{% url 'login' %}", // Замените на URL вашего представления регистрации
+//   type: 'POST',
+//   data: {
+//     'username': $('#username').val(),
+//     'password_first': password,
+//     'email': $('#email').val(),
+//     'first_name': $('#first_name').val(),
+//     'repeat_password': repeatPassword
+//   },
+//   success: function(response) {
+//     if (response.success) {
+//       console.log('hello')
+//     } else {
+//       // Отображение сообщения об ошибке
+//       $('#error-message').text(response.error).show();
+//     }
+//   },
+//   error: function(xhr, errmsg, err) {
+//     // Обработка ошибки
+//     $('#error-message').text('Произошла ошибка при регистрации').show();
+//   }
+// });
 //     btnAdd.addEventListener('click', ()=>{
 //         document.body.style.overflow = 'hidden';
 //         ModalWindow.style.display = 'block';

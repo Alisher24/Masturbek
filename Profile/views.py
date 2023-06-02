@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
-from Auth.models import CustomerUser
+from Auth.models import CustomerUser, Recipe
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 
 def index(request):
-    return render(request, 'Profile/Profile.html')
+    recipes = Recipe.objects.filter(user=request.user)
+    print(1111)
+    return render(request, 'Profile/Profile.html', {"recipes": recipes})
 
 def edit_profile(request):
     if request.method == 'POST':
@@ -34,6 +36,22 @@ def edit_profile(request):
             customer_user.photo = user.photo
 
         customer_user.save()
+
+        return redirect('profile')  # Перенаправление на страницу профиля
+
+    return render(request, 'Profile/Profile.html')
+
+def create_recipe(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        category = request.POST.get('category')
+        photo = request.FILES.get('photo')
+
+        recipe = Recipe(user=request.user, title=title, description=description, category=category)
+        if photo:
+            recipe.photo = photo
+        recipe.save()
 
         return redirect('profile')  # Перенаправление на страницу профиля
 
