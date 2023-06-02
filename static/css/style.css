@@ -8,6 +8,7 @@
 
 body {
   background-color: #F1F8F6;
+  height: 100%;
 }
 
 .HeaderHome {
@@ -15,6 +16,12 @@ body {
   width: 100%;
   padding-top: 15px;
   height: 480px;
+}
+.HeaderHome h1 {
+  text-align: center;
+  padding: 10% 0;
+  font-family: "Inter" sans-serif;
+  font-weight: 700;
 }
 
 nav ul {
@@ -53,9 +60,9 @@ nav ul li a {
 .mainContent_Header select {
   float: left;
 }
-.mainContent_Header h1 {
-  font-family: "Gilroy";
-  font-weight: 800;
+.mainContent_Header h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
   font-size: 32px;
   text-align: center;
 }
@@ -84,7 +91,7 @@ nav ul li a {
 }
 
 footer {
-  min-height: 40px;
+  min-height: 60px;
   width: 100%;
   display: block;
   background-color: #222222;
@@ -125,6 +132,9 @@ footer {
 .HeaderProfile_Block_Two ul li b {
   color: gray;
 }
+.HeaderProfile_Block_Two ul li b a {
+  color: gray;
+}
 .HeaderProfile_Block_Two ul li span {
   font-weight: 400;
 }
@@ -145,6 +155,7 @@ footer {
 
 .UserRecepies {
   padding: 180px 0 40px 0;
+  min-height: 800px;
 }
 .UserRecepies_Header {
   margin: 0 auto;
@@ -152,6 +163,8 @@ footer {
 }
 .UserRecepies_Header h1 {
   text-align: center;
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
 }
 .UserRecepies_Recepies {
   display: flex;
@@ -294,7 +307,7 @@ footer {
 .HeaderOfRecipePage a {
   text-decoration: none;
   color: #ffffff;
-  font-family: "Gilroy";
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
@@ -316,7 +329,7 @@ footer {
 }
 .RecipeBlock_ShortInfo h2 {
   font-size: 32px;
-  font-family: "Gilroy";
+  font-family: "Inter", sans-serif;
   font-weight: 700;
 }
 .RecipeBlock_ShortInfo ul {
@@ -327,7 +340,7 @@ footer {
   margin-top: 10px;
   list-style: none;
   font-size: 22px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
 }
 .RecipeBlock_ShortInfo ul li span {
   color: #ffffff;
@@ -409,6 +422,8 @@ footer {
   margin-bottom: 20px;
 }
 .Coments_Header h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
   text-align: center;
 }
 .Coments_Block_Post {
@@ -425,7 +440,7 @@ footer {
   width: 400px;
 }
 .Coments_Block_Post form .PostСomment {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   width: 180px;
   height: 40px;
   font-size: 18px;
@@ -455,7 +470,7 @@ footer {
 }
 .Coments_Coment .ComentText {
   font-size: 18px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   margin-bottom: 0;
   padding-bottom: 0;
 }
@@ -467,6 +482,39 @@ footer {
 
 .MainContentOfAuth {
   padding: 40px 60px;
+}
+
+.logo {
+  width: 240px;
+  background: #ffffff;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+.logo img {
+  width: 160px;
+  height: 80px;
+  display: block;
+  margin: 0 auto;
+}
+
+.headerOfSaved {
+  margin: 0 auto;
+}
+.headerOfSaved h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  text-align: center;
+}
+
+.Saved_Block {
+  width: 100%;
+  padding: 40px;
+  background: #ffffff;
+}
+.Saved_Block ol li a {
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  color: #000000;
 }
 
 @media (max-width: 1200px) {
@@ -484,6 +532,9 @@ footer {
   }
 }
 @media (max-width: 991px) {
+  .HeaderHome h1 {
+    padding: 20% 0;
+  }
   .HeaderProfile_Block {
     justify-content: center;
     flex-direction: column;
@@ -504,6 +555,9 @@ footer {
   }
 }
 @media (max-width: 767px) {
+  .HeaderHome h1 {
+    padding: 30% 0;
+  }
   .HeaderProfile_Block {
     width: 96%;
   }
@@ -512,6 +566,9 @@ footer {
   }
 }
 @media (max-width: 575px) {
+  .HeaderHome h1 {
+    padding: 50% 0;
+  }
   .HeaderProfile_Block {
     width: 96%;
   }

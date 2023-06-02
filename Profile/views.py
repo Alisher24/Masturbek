@@ -8,6 +8,8 @@ def index(request):
     print(1111)
     return render(request, 'Profile/Profile.html', {"recipes": recipes})
 
+def savedRecipes(request):
+    return render(request, 'Profile/SavedRecipe.html')
 def edit_profile(request):
     if request.method == 'POST':
         edit_name = request.POST.get('edit_name')
