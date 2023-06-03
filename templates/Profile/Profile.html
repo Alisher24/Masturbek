@@ -12,6 +12,7 @@
     <title>Профиль</title>
 </head>
 <body>
+<a href="..">Типо логтип который должен был сделать тИлек</a>
     <div class="ShowModalWindow">
         <div class="ModalWindow">
             <<form action="{% url 'create_recipe' %}" method="POST" enctype="multipart/form-data">
@@ -119,7 +120,7 @@
                                 <img src="{{ recipe.photo.url }}" class="card-img-top" alt="картинка еды">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ recipe.title }}</h5>
-                                    <p class="card-text">{{ recipe.description }}</p>
+                                    <p class="card-text">{{ recipe.category }}</p>
                                     <div class="RecipeBlock_ShortInfo_Statistics">
                                         <div class="RecipeBlock_ShortInfo_Statistics_Likes">
                                           <p><b>12</b></p>

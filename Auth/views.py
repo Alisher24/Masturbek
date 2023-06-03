@@ -7,6 +7,7 @@ from django.http import JsonResponse
 import Profile
 from .models import CustomerUser
 from django.views.decorators.csrf import csrf_exempt
+
 @csrf_exempt
 def index(request):
     print(111)
@@ -19,7 +20,7 @@ def index(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('profile')  # Перенаправление на страницу профиля
+                return JsonResponse({'success': True})  # Перенаправление на страницу профиля
             else:
                 return HttpResponseBadRequest("Неверные учетные данные")
 
