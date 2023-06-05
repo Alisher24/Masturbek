@@ -1,4 +1,6 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
+
 from Auth.models import Recipe
 from django.http import JsonResponse
 from Auth.models import Like
@@ -84,5 +86,18 @@ def like_recipe(request):
         return JsonResponse({'success': True, 'likes_count': likes_count, 'is_liked': is_liked})
     else:
         return JsonResponse({'error': 'Invalid request'})
-def recipeCard(request):
-    return render(request, 'Recipe/Recipe.html')
+
+@csrf_exempt
+def recipe_redirect(request):
+    recipe_id = request.POST.get('recipe_id')
+    recipe = get_object_or_404(Recipe, id=recipe_id)
+    recipe.likes_count = Like.objects.filter(recipe_id=recipe.id).count()
+    if request.user.is_authenticated:
+        recipe.is_liked = Like.objects.filter(recipe_id=recipe.id, user=request.user.id).exists()
+    else:
+        recipe.is_liked = Like.objects.filter(recipe_id=recipe.id).exists()
+    context = {
+        'recipe': recipe,
+        'heart_style': 'Active'  # Здесь укажите нужный стиль (например, 'Active' или 'Usuall')
+    }
+    return render(request, 'Recipe/Recipe.html', context)

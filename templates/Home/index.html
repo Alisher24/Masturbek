@@ -38,37 +38,49 @@
                 </div>
 
                 <div class="col-12">
-                  <div id="recipe-container" class="mainContent_Recepies">
-                    {% for recipe in recipes %}
-                    <div class="card" style="width: 18rem;">
-                      <img src="{{ recipe.photo.url }}" class="card-img-top" alt="картинка еды">
-                      <div class="card-body">
-                        <h5 class="card-title">{{ recipe.title }}</h5>
-                        <p class="card-text">{{ recipe.category }}</p>
-                        <div class="RecipeBlock_ShortInfo_Statistics">
-                          <div class="RecipeBlock_ShortInfo_Statistics_Likes">
-                            <p><b>{{ recipe.likes_count }}</b></p>
-                            {% if recipe.is_liked %}
-                                <img src="{% static 'icons/Active heart.png' %}" alt="картинка лайка" class="like-image {{ heart_style }}" data-recipe-id="{{ recipe.id }}">
-                            {% else %}
-                                <img src="{% static 'icons/heart.png' %}" alt="картинка лайка" class="like-image {{ heart_style }}" data-recipe-id="{{ recipe.id }}">
-                            {% endif %}
-                          </div>
-                          <div class="RecipeBlock_ShortInfo_Statistics_Comments">
-                            <p><b>1</b></p>
-                            <img src="{% static 'icons/speech-bubble.png' %}" alt="картинка комментариев">
-                          </div>
-                          <div class="RecipeBlock_ShortInfo_Statistics_Saves">
-                            <p><b>0</b></p>
-                            <img src="{% static 'icons/save-instagram.png'%}" alt="картинка лайка" class="Usuall">
-                            <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка лайка" class="Active">
-                          </div>
+                    <div id="recipe-container" class="mainContent_Recepies">
+                        <div class="row">
+                            {% for recipe in recipes %}
+                            <div class="col-md-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img src="{{ recipe.photo.url }}" class="card-img-top" alt="картинка еды">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ recipe.title }}</h5>
+                                        <p class="card-text">{{ recipe.category }}</p>
+                                        <div class="RecipeBlock_ShortInfo_Statistics">
+                                            <div class="RecipeBlock_ShortInfo_Statistics_Likes">
+                                                <p><b>{{ recipe.likes_count }}</b></p>
+                                                {% if recipe.is_liked %}
+                                                <img src="{% static 'icons/Active heart.png' %}" alt="картинка лайка"
+                                                    class="like-image {{ heart_style }}" data-recipe-id="{{ recipe.id }}">
+                                                {% else %}
+                                                <img src="{% static 'icons/heart.png' %}" alt="картинка лайка"
+                                                    class="like-image {{ heart_style }}" data-recipe-id="{{ recipe.id }}">
+                                                {% endif %}
+                                            </div>
+                                            <div class="RecipeBlock_ShortInfo_Statistics_Comments">
+                                                <p><b>1</b></p>
+                                                <img src="{% static 'icons/speech-bubble.png' %}" alt="картинка комментариев">
+                                            </div>
+                                            <div class="RecipeBlock_ShortInfo_Statistics_Saves">
+                                                <p><b>0</b></p>
+                                                <img src="{% static 'icons/save-instagram.png'%}" alt="картинка лайка"
+                                                    class="Usuall">
+                                                <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка лайка"
+                                                    class="Active">
+                                            </div>
+                                        </div>
+                                        <form method="post" action="/recipe/">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
+                                            <button type="submit" class="btn btn-primary">Перейти куда-нибудь</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
                         </div>
-                        <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
-                      </div>
                     </div>
-                    {% endfor %}
-                  </div>
                 </div>
             </div>
         </div>
