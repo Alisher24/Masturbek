@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css'%}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}"/>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <title>Профиль</title>
 </head>
 <body>
@@ -123,9 +124,12 @@
                                     <p class="card-text">{{ recipe.category }}</p>
                                     <div class="RecipeBlock_ShortInfo_Statistics">
                                         <div class="RecipeBlock_ShortInfo_Statistics_Likes">
-                                          <p><b>12</b></p>
-                                          <img src="{% static 'icons/heart.png'%}" alt="картинка лайка" class="Usuall">
-                                          <img src="{% static 'icons/Active heart.png'%}" alt="картинка лайка" class="Active">
+                                            <p><b>{{ recipe.likes_count }}</b></p>
+                                            {% if recipe.is_liked %}
+                                                <img src="{% static 'icons/Active heart.png' %}" alt="картинка лайка" class="like-image {{ heart_style }}" data-recipe-id="{{ recipe.id }}">
+                                            {% else %}
+                                                <img src="{% static 'icons/heart.png' %}" alt="картинка лайка" class="like-image {{ heart_style }}" data-recipe-id="{{ recipe.id }}">
+                                            {% endif %}
                                         </div>
                                         <div class="RecipeBlock_ShortInfo_Statistics_Comments">
                                           <p><b>1</b></p>
@@ -148,5 +152,6 @@
     </section>
     <footer>sda</footer>
     <script src="{% static 'js/script.js'%}"></script>
+    <script src="{% static 'js/likes_coments_saves.js' %}"></script>
 </body>
 </html>

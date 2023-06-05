@@ -47,9 +47,12 @@
                         <p class="card-text">{{ recipe.category }}</p>
                         <div class="RecipeBlock_ShortInfo_Statistics">
                           <div class="RecipeBlock_ShortInfo_Statistics_Likes">
-                            <p><b>12</b></p>
-                            <img src="{% static 'icons/heart.png'%}" alt="картинка лайка" class="Usuall">
-                            <img src="{% static 'icons/Active heart.png'%}" alt="картинка лайка" class="Active">
+                            <p><b>{{ recipe.likes_count }}</b></p>
+                            {% if recipe.is_liked %}
+                                <img src="{% static 'icons/Active heart.png' %}" alt="картинка лайка" class="like-image {{ heart_style }}" data-recipe-id="{{ recipe.id }}">
+                            {% else %}
+                                <img src="{% static 'icons/heart.png' %}" alt="картинка лайка" class="like-image {{ heart_style }}" data-recipe-id="{{ recipe.id }}">
+                            {% endif %}
                           </div>
                           <div class="RecipeBlock_ShortInfo_Statistics_Comments">
                             <p><b>1</b></p>
@@ -71,69 +74,7 @@
         </div>
     </section>
     <footer>sda</footer>
-<script>
-    $(document).ready(function() {
-        $('#category-select').change(function() {
-            var selectedCategory = $(this).val();
-
-            $.ajax({
-                url: '/ajax/recipes/',
-                type: 'GET',
-                data: { category: selectedCategory },
-                dataType: 'json',
-                success: function(response) {
-                    var recipeContainer = $('#recipe-container');
-                    recipeContainer.empty();
-
-                    $.each(response.data, function(index, recipe) {
-                        var card = $('<div class="card" style="width: 18rem;">');
-                        var cardImg = $('<img>').addClass('card-img-top').attr('src', recipe.photo_url).attr('alt', 'картинка еды');
-                        card.append(cardImg);
-                        console.log(recipe.photo_url)
-
-                        var cardBody = $('<div class="card-body">');
-                        card.append(cardBody);
-
-                        var title = $('<h5>').addClass('card-title').text(recipe.title);
-                        cardBody.append(title);
-                        console.log(title)
-
-                        var category = $('<p>').addClass('card-text').text(recipe.category);
-                        cardBody.append(category);
-
-                        var statistics = $('<div class="RecipeBlock_ShortInfo_Statistics">');
-                        cardBody.append(statistics);
-
-                        var likes = $('<div class="RecipeBlock_ShortInfo_Statistics_Likes">');
-                        likes.append('<p><b>12</b></p>');
-                        likes.append('<img src="/static/icons/heart.png" alt="картинка лайка" class="Usuall">');
-                        likes.append('<img src="/static/icons/Active heart.png" alt="картинка лайка" class="Active">');
-                        statistics.append(likes);
-
-                        var comments = $('<div class="RecipeBlock_ShortInfo_Statistics_Comments">');
-                        comments.append('<p><b>0</b></p>');
-                        comments.append('<img src="/static/icons/speech-bubble.png" alt="картинка комментариев">');
-                        statistics.append(comments);
-
-                        var saves = $('<div class="RecipeBlock_ShortInfo_Statistics_Saves">');
-                        saves.append('<p><b>0</b></p>');
-                        saves.append('<img src="/static/icons/save-instagram.png" alt="картинка лайка" class="Usuall">');
-                        saves.append('<img src="/static/icons/Active save-instagram.png" alt="картинка лайка" class="Active">');
-                        statistics.append(saves);
-
-                        var button = $('<a href="#" class="btn btn-primary">Перейти куда-нибудь</a>');
-                        cardBody.append(button);
-
-                        recipeContainer.append(card);
-                    });
-
-                },
-                error: function(xhr, errmsg, err) {
-                    console.log('Ошибка при получении рецептов');
-                }
-            });
-        });
-    });
-</script>
+<script src="{% static 'js/likes_coments_saves.js' %}"></script>
+<script src="{% static 'js/filter.js' %}"></script>
 </body>
 </html>

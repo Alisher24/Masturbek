@@ -1,12 +1,19 @@
 from django.shortcuts import render, redirect
-from Auth.models import CustomerUser, Recipe
+from Auth.models import CustomerUser, Recipe, Like
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 
 def index(request):
     recipes = Recipe.objects.filter(user=request.user)
-    print(1111)
-    return render(request, 'Profile/Profile.html', {"recipes": recipes})
+    for recipe in recipes:
+        recipe.likes_count = Like.objects.filter(recipe_id=recipe.id).count()
+        recipe.is_liked = Like.objects.filter(recipe_id=recipe.id, user=request.user).exists()
+
+    context = {
+        'recipes': recipes,
+        'heart_style': 'Active'  # Здесь укажите нужный стиль (например, 'Active' или 'Usuall')
+    }
+    return render(request, 'Profile/Profile.html', context)
 
 def savedRecipes(request):
     return render(request, 'Profile/SavedRecipe.html')

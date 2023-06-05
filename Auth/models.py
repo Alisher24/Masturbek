@@ -19,3 +19,21 @@ class Recipe(models.Model):
     photo = models.ImageField(upload_to='recipe_photos', blank=True, null=True)
     def __str__(self):
         return self.title
+
+class Comment(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+class Like(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='likes')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+class SavedRecipe(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='saved_recipes')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
