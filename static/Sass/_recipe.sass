@@ -1,8 +1,9 @@
 .HeaderOfRecipePage
+    position: relative
     background: #FFA500
     width: 100%
     padding: 40px 40px 10px 40px
-    min-height: 480px
+    min-height: 680px
     a
         text-decoration: none
         color: #ffffff
@@ -120,6 +121,14 @@
     hr
         width: 200px
         margin: 0 auto
+    &_UserTextBlock
+        p
+            margin: 0
+            padding: 0
+            b
+                font-size: 18px
+                margin: 0
+                padding: 0
     &_Coment
         display: flex
         gap: 10px
@@ -141,3 +150,17 @@
             color: gray
             margin-bottom: 0
             padding-bottom: 0
+
+.LogoInRecipe
+    position: absolute
+    bottom: 0
+    left: 50%
+    transform: translate(-50%)
+    background: #ffffff
+    width: 200px
+    img
+        display: block
+        
+        width: 160px
+        height: 80px
+        margin: 0 auto

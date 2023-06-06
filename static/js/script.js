@@ -8,7 +8,7 @@ const btnAdd = document.querySelector('#AddRecept'),
     LoginInputs = document.querySelector('#pills-login'),
     ReginInputs = document.querySelector('#pills-register'),
     EditProfile = document.querySelector('#EditProfile'),
-    ModalProfile = document.querySelector('#Profile');
+    ModalProfile = document.querySelector('#Profile'); 
 
 
 if(btnAdd) {
@@ -61,6 +61,7 @@ if(EditProfile){
         console.log(11111);
         });
 }
+
 
 // $.ajax({
 //   url: "{% url 'login' %}", // Замените на URL вашего представления регистрации

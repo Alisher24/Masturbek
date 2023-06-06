@@ -6,7 +6,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<<<<<<< HEAD
   <title>Страница рецепта</title>
   <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css'%}">
   <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css'%}">
@@ -51,7 +50,7 @@
       </div>
     </div>
   </div>
-  <center><a href="/">Student Recipes</a></center>
+  <a href=".." class="LogoInRecipe"><img src="{% static 'icons/logo.jpg'%}" alt="лого"></a>
 </header>
 <section class="Coments">
   <div class="container">
@@ -70,18 +69,15 @@
         <hr>
         <div class="Coments_Coment">
           <img src="{% static 'imgs/alisher.jpg'%}" alt="аватарка">
-          <p class="ComentText">Лайк тебе и подписка! Спасииибо!</p>
-          <p class="ComentData">24.05.2023</p>
+          <div class="Coments_UserTextBlock">
+            <p><b>Алишер</b></p>
+            <p class="ComentText">Лайк тебе и подписка! Спасииибо!</p>
+            <p class="ComentData">24.05.2023</p>
+          </div>
+          
         </div>
     </div>
   </div>
 </section>
-=======
-  <title>$Title$</title>
-</head>
-<body>
-<script src="{% static 'js/likes_coments_saves.js' %}"></script>
-$END$
->>>>>>> 355940fadc1ff165cc09515e586742cbd4535187
 </body>
 </html>

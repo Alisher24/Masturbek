@@ -101,3 +101,5 @@ def recipe_redirect(request):
         'heart_style': 'Active'  # Здесь укажите нужный стиль (например, 'Active' или 'Usuall')
     }
     return render(request, 'Recipe/Recipe.html', context)
+
+

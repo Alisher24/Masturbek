@@ -2,6 +2,7 @@ $mainColor: #FFA500
 
 
 .HeaderHome
+    position: relative
     background: url('../imgs/back.jpg') center center/cover no-repeat
     width: 100%
     padding-top: 15px
@@ -68,5 +69,33 @@ footer
     width: 100%
     display: block
     background-color: #222222
-
-
+    color: #ffffff
+    text-align: center
+    padding: 20px
+.LogoInHome
+    position: absolute
+    bottom: 0
+    left: 50%
+    transform: translate(-50%)
+    background: #ffffff
+    width: 200px
+    img
+        display: block
+        
+        width: 160px
+        height: 80px
+        margin: 0 auto
+.card-body
+    .RecipeBlock_ShortInfo_Statistics
+        &_Likes
+            p
+                b
+                    color: #000000
+        &_Comments
+            p
+                b
+                    color: #000000
+        &_Saves
+            p
+                b
+                    color: #000000

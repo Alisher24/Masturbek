@@ -9,12 +9,15 @@
             img
                 width: 100%
 @media (max-width: 991px)
+    .HeaderOfRecipePage
+        min-height: 800px
     .HeaderHome
         h1
             padding: 20% 0
     .HeaderProfile_Block
         justify-content: center
         flex-direction: column
+        min-height: 510px
         &_Two
             width: 50%
         &_One
@@ -25,6 +28,10 @@
                     img 
                         width: 22rem
                         height: 160px
+    .RecipeBlock_ShortInfo_Statistics
+        justify-content: center
+    .UserRecepies
+        padding-top: 320px
 @media (max-width: 767px)
     .HeaderHome
         h1
@@ -32,6 +39,7 @@
     .HeaderProfile
         &_Block
             width: 96%
+            min-height: 510px
             &_One
                 .UserCard
                     img 
@@ -73,3 +81,6 @@
             width: 100%
             img
                 height: 200px
+    .LogoInProfile img
+        display: block
+        margin: 0 auto
