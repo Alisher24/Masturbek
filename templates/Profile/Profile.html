@@ -141,7 +141,11 @@
                                           <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка лайка" class="Active">
                                         </div>
                                     </div>
-                                    <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                    <form method="post" action="/recipe/">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
+                                        <button type="submit" class="btn btn-primary">Перейти куда-нибудь</button>
+                                    </form>
                                 </div>
                             </div>
                         {% endfor %}

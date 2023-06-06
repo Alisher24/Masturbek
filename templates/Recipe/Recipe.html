@@ -12,25 +12,32 @@
   <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css'%}">
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}"/>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <header class="HeaderOfRecipePage">
   <div class="RecipeBlock">
     <div class="RecipeBlock_Img">
-      <img src="{% static 'imgs/shaverma.jpg'%}" alt="Фото рецепта">
+      <img src="{{ recipe.photo.url }}" alt="Фото рецепта">
     </div>
     <div class="RecipeBlock_ShortInfo">
-      <h2>Название рецепта</h2>
+      <h2>{{ recipe.title }}</h2>
       <ul>
-        <li><b>Категория:</b> <span>ВКУСНО НО ДОРОГО</span></li>
-        <li><b>Автор:</b> <span>Мастурбек</span></li>
-        <li><b>Дата публикации:</b> <span>20.05.2023</span></li>
+        <li><b>Категория:</b> <span>{{ recipe.category }}</span></li>
+        <li><b>Автор:</b> <span>{{ user.username }}</span></li>
+        <li><b>Дата публикации:</b> <span>{{ recipe.publication_date }}</span></li>
       </ul>
       <div class="RecipeBlock_ShortInfo_Statistics">
         <div class="RecipeBlock_ShortInfo_Statistics_Likes">
-          <p><b>12</b></p>
-          <img src="{% static 'icons/heart.png'%}" alt="картинка лайка" class="Usuall">
-          <img src="{% static 'icons/Active heart.png'%}" alt="картинка лайка" class="Active">
+          <p><b>{{ recipe.likes_count }}</b></p>
+            {% if recipe.is_liked %}
+            <img src="{% static 'icons/Active heart.png' %}" alt="картинка лайка"
+                class="like-image {{ heart_style }}" data-recipe-id="{{ recipe.id }}">
+            {% else %}
+            <img src="{% static 'icons/heart.png' %}" alt="картинка лайка"
+                class="like-image {{ heart_style }}" data-recipe-id="{{ recipe.id }}">
+            {% endif %}
         </div>
         <div class="RecipeBlock_ShortInfo_Statistics_Comments">
           <p><b>1</b></p>
@@ -73,6 +80,7 @@
   <title>$Title$</title>
 </head>
 <body>
+<script src="{% static 'js/likes_coments_saves.js' %}"></script>
 $END$
 >>>>>>> 355940fadc1ff165cc09515e586742cbd4535187
 </body>
