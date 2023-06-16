@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 {% load static %}
-=======
->>>>>>> 355940fadc1ff165cc09515e586742cbd4535187
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +12,7 @@
 
 </head>
 <body>
+<a href=".." class="LogoInProfile"><img src="{% static 'icons/logo.jpg'%}" alt="лого"></a>
 <header class="HeaderOfRecipePage">
   <div class="RecipeBlock">
     <div class="RecipeBlock_Img">
@@ -39,45 +37,72 @@
             {% endif %}
         </div>
         <div class="RecipeBlock_ShortInfo_Statistics_Comments">
-          <p><b>1</b></p>
+          <p><b>{{ recipe.comments_count }}</b></p>
           <img src="{% static 'icons/speech-bubble.png' %}" alt="картинка комментариев">
         </div>
         <div class="RecipeBlock_ShortInfo_Statistics_Saves">
-          <p><b>0</b></p>
-          <img src="{% static 'icons/save-instagram.png'%}" alt="картинка лайка" class="Usuall">
-          <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка лайка" class="Active">
+            <p><b>{{ recipe.saves_count }}</b></p>
+            {% if recipe.is_saved %}
+            <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка сохранения"
+                class="save-image {{ save_style }}" data-recipe-id="{{ recipe.id }}">
+            {% else %}
+            <img src="{% static 'icons/save-instagram.png'%}" alt="картинка сохранения"
+                class="save-image {{ save_style }}" data-recipe-id="{{ recipe.id }}">
+            {% endif %}
         </div>
       </div>
     </div>
+
   </div>
-  <a href=".." class="LogoInRecipe"><img src="{% static 'icons/logo.jpg'%}" alt="лого"></a>
 </header>
+<section class="Descr">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="RecipeBlock_FullText">
+                    <h2>Описание</h2>
+                    <div class="RecipeBlock_BlockText">
+                        {{ recipe.description }}
+                    </div>  <!-- Здесь выводится полный текст рецепта -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="Coments">
   <div class="container">
+  {% load cache %}
+  {% cache 60 sidebar %}
     <div class="row">
         <div class="Coments_Header">
           <h2>КОММЕНТАРИИ</h2>
         </div>
         <div class="Coments_Block">
           <div class="Coments_Block_Post">
-            <form action="POST">
+            <form id="commentForm" data-url="{% url 'add_comment' %}" data-recipe_id="{{ recipe.id }}" method="POST">
+              {% csrf_token %}
               <input type="text" name="userText" placeholder="Ваш текст">
               <button type="submit" class="PostСomment">ОСТАВИТЬ</button>
             </form>
           </div>
         </div>
         <hr>
-        <div class="Coments_Coment">
-          <img src="{% static 'imgs/alisher.jpg'%}" alt="аватарка">
-          <div class="Coments_UserTextBlock">
-            <p><b>Алишер</b></p>
-            <p class="ComentText">Лайк тебе и подписка! Спасииибо!</p>
-            <p class="ComentData">24.05.2023</p>
-          </div>
-          
+        <div id="commentsList">
+          {% for comment in comments %}
+            <div class="Coments_Coment" data-comment-id="{{ comment.id }}">
+              <img src="{{ comment.user.photo.url }}" alt="аватарка">
+              <div class="Coments_UserTextBlock">
+                <p><b>{{ comment.user.username }}</b></p>
+                <p class="ComentText">{{ comment.text }}</p>
+                <p class="ComentData">{{ comment.created_at }}</p>
+              </div>
+            </div>
+          {% endfor %}
         </div>
     </div>
+  {% endcache %}
   </div>
 </section>
+<script src="{% static 'js/likes_coments_saves.js' %}"></script>
 </body>
 </html>

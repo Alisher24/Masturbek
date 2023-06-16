@@ -13,7 +13,6 @@
     <title>Профиль</title>
 </head>
 <body>
-<a href=".." class="LogoInProfile"><img src="{% static 'icons/logo.jpg'%}" alt="лого"></a>
     <div class="ShowModalWindow">
         <div class="ModalWindow">
             <<form action="{% url 'create_recipe' %}" method="POST" enctype="multipart/form-data">
@@ -78,8 +77,8 @@
     <header class="HeaderProfile">
         <div class="Authbtn" style="padding-top: 0;">
             <a href="{% url 'logout' %}">Выйти</a>
-            
         </div>
+        <a href=".." class="LogoInProfile"><img src="{% static 'icons/logo.jpg'%}" alt="лого"></a>
         <div class="container">
             <div class="row">
                 <div class="HeaderProfile_Block">
@@ -98,10 +97,10 @@
                             <li><b>Имя:</b> <span>{{ user.first_name }}</span></li>
                             <li><b>Номер:</b> <span>{{ user.phone_number }}</span></li>
                             <li><b>Почта:</b> <span>{{ user.email }}</span></li>
-                            <li><b>Рецептов:</b> <span>12</span></li>
-                            <li><b><a href="saved/">Сохраненные рецепты:</a></b> <span>1</span></li>
+                            <li><b>Рецептов:</b> <span>{{ recipe_count }}</span></li>
+                            <li><b><a href="saves/">Сохраненные рецепты:</a></b> <span>{{ saves_count }}</span></li>
+                            <li><b><a href="likes/">Понравившиеся рецепты:</a></b> <span>{{ likes_count }}</span></li>
                         </ul>
-                        
                     </div>
                     <div class="HeaderProfile_Post">
                         <a href="#" class="btn btn-primary center" id="AddRecept">ДОБАВИТЬ РЕЦЕПТ</a>
@@ -134,13 +133,18 @@
                                             {% endif %}
                                         </div>
                                         <div class="RecipeBlock_ShortInfo_Statistics_Comments">
-                                          <p><b>1</b></p>
+                                          <p><b>{{ recipe.comments_count }}</b></p>
                                           <img src="{% static 'icons/speech-bubble.png' %}" alt="картинка комментариев">
                                         </div>
                                         <div class="RecipeBlock_ShortInfo_Statistics_Saves">
-                                          <p><b>0</b></p>
-                                          <img src="{% static 'icons/save-instagram.png'%}" alt="картинка лайка" class="Usuall">
-                                          <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка лайка" class="Active">
+                                            <p><b>{{ recipe.saves_count }}</b></p>
+                                            {% if recipe.is_saved %}
+                                            <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка сохранения"
+                                                class="save-image {{ save_style }}" data-recipe-id="{{ recipe.id }}">
+                                            {% else %}
+                                            <img src="{% static 'icons/save-instagram.png'%}" alt="картинка сохранения"
+                                                class="save-image {{ save_style }}" data-recipe-id="{{ recipe.id }}">
+                                            {% endif %}
                                         </div>
                                     </div>
                                     <form method="post" action="/recipe/">

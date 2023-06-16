@@ -16,7 +16,6 @@
 
 <body>
   <center style="padding-top: 10px;"><h1>АВТОРИЗАЦИЯ</h1></center>
-  <a href=".." class="LogoInRecipe"><img src="{% static 'icons/logo.jpg'%}" alt="лого"></a>
 <!-- HTML-разметка для модального окна -->
 <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="error-modal-label" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -140,44 +139,49 @@
 <script src="{% static 'js/script.js' %}"></script>
 
 <script>
-$(document).ready(function() {
-  $('#register-form, #login-form').submit(function(event) {
-    event.preventDefault();
+    $(document).ready(function() {
+      function performOperation(url, formData) {
+        var deferred = $.Deferred();
 
-    // Получаем данные формы
-    var formData = $(this).serializeArray();
+        $.ajax({
+          url: url,
+          type: 'POST',
+          data: formData,
+          dataType: 'json',
+          success: function(response) {
+            deferred.resolve(response);
+          },
+          error: function(xhr, errmsg, err) {
+            deferred.reject(xhr.responseText);
+          }
+        });
 
-    // Определяем тип операции
-    var operation = '';
-    if ($(this).attr('id') === 'register-form') {
-      operation = 'register';
-    } else if ($(this).attr('id') === 'login-form') {
-      operation = 'login';
-    }
-
-    // Добавляем информацию о нажатой кнопке
-    formData.push({name: operation + '_button', value: 'true'});
-
-    $.ajax({
-      url: this.action,
-      type: 'POST',
-      data: formData,
-      dataType: 'json',
-      success: function(response) {
-        // Обработка успешного ответа от сервера
-        window.location.href = '/profile/'; // Перенаправление на страницу профиля
-      },
-      error: function(xhr, errmsg, err) {
-        // Обработка ошибки
-        var errorResponse = xhr.responseText;
-        var modalTitle = (operation === 'register') ? 'Ошибка регистрации' : 'Ошибка авторизации';
-        $('#modal-title').text(modalTitle);
-        $('#error-modal-message').text(errorResponse);
-        $('#error-modal').modal('show'); // Открываем модальное окно с ошибкой
+        return deferred.promise();
       }
+
+      $('#register-form, #login-form').submit(function(event) {
+        event.preventDefault();
+
+        var $form = $(this);
+        var formData = $form.serializeArray();
+        var url = $form.attr('action');
+        var operation = ($form.attr('id') === 'register-form') ? 'register' : 'login';
+
+        // Добавляем информацию о нажатой кнопке
+        formData.push({name: operation + '_button', value: 'true'});
+
+        performOperation(url, formData)
+          .done(function(response) {
+            window.location.href = '/profile/'; // Перенаправление на страницу профиля
+          })
+          .fail(function(errorResponse) {
+            var modalTitle = (operation === 'register') ? 'Ошибка регистрации' : 'Ошибка авторизации';
+            $('#modal-title').text(modalTitle);
+            $('#error-modal-message').text(errorResponse);
+            $('#error-modal').modal('show'); // Открываем модальное окно с ошибкой
+          });
+      });
     });
-  });
-});
 </script>
 
 </body>

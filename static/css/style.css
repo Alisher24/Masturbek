@@ -15,7 +15,7 @@ body {
   position: relative;
   background: url("../imgs/back.jpg") center center/cover no-repeat;
   width: 100%;
-  padding-top: 15px;
+  /*padding-top: 15px;*/
   height: 480px;
 }
 .HeaderHome h1 {
@@ -131,7 +131,7 @@ footer {
   background-color: #FFA500;
   height: 300px;
   width: 100%;
-  padding-top: 40px;
+  /*padding-top: 40px;*/
 }
 .HeaderProfile_Block {
   position: relative;
@@ -184,7 +184,7 @@ footer {
 }
 
 .UserRecepies {
-  padding: 180px 0 40px 0;
+  padding: 225px 0 40px 0;
   min-height: 800px;
 }
 .UserRecepies_Header {
@@ -237,7 +237,7 @@ footer {
 .LogoInProfile {
   display: block;
   width: 100%;
-  background: #ffffff;
+  /*background: #FFA500;*/
 }
 .LogoInProfile img {
   width: 160px;
@@ -405,7 +405,7 @@ footer {
   color: #ffffff;
 }
 .RecipeBlock_ShortInfo_Statistics_Likes .Active {
-  display: none;
+  /*display: none;*/
   width: 30px;
   height: 30px;
 }
@@ -445,7 +445,7 @@ footer {
   color: #ffffff;
 }
 .RecipeBlock_ShortInfo_Statistics_Saves .Active {
-  display: none;
+  /*display: none;*/
   width: 30px;
   height: 30px;
 }
@@ -533,8 +533,8 @@ footer {
 .LogoInRecipe {
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translate(-50%);
+  left: 0;
+  /*transform: translate(-10%);*/
   background: #ffffff;
   width: 200px;
 }
@@ -683,3 +683,19 @@ footer {
     margin: 0 auto;
   }
 }
+.Descr{
+  background: #FFA500;
+  min-height: 20px;
+}
+.Descr .RecipeBlock_FullText{
+  width: 100%;
+  padding: 5px 10px;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+}
+.Descr .RecipeBlock_FullText h2{
+  text-align: center;
+  margin-bottom: 10px;
+}
+

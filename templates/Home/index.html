@@ -21,21 +21,21 @@
                 <a href="/auth/login">личный кабинет</a>
             {% endif %}
         </div>
+        <a href=".." class="LogoInProfile"><img src="{% static 'icons/logo.jpg'%}" alt="лого"></a>
         <h1>Поделись своим рецептом!</h1>
-        <a href=".." class="LogoInHome"><img src="{% static 'icons/logo.jpg'%}" alt="лого"></a>
     </header>
     <section class="mainContent">
         <div class="container">
             <div class="row">
                 <div class="mainContent_Header">
                     <select id="category-select">
-                        <option value="all">ПОПУЛЯРНОЕ</option>
+                        <option value="ПОПУЛЯРНОЕ" selected>ПОПУЛЯРНОЕ</option>
                         <option value="ВКУСНО И ДОРОГО">ВКУСНО И ДОРОГО</option>
                         <option value="БЫСТРО И ВКУСНО">БЫСТРО И ВКУСНО</option>
                         <option value="ДЕЛИКАТЕСЫ">ДЕЛИКАТЕСЫ</option>
                         <option value="НАДОЛГО">НАДОЛГО</option>
                     </select>
-                    <h2>ПОПУЛЯРНОЕ</h2>
+                    <h2 id="category-title">ПОПУЛЯРНОЕ</h2>
                 </div>
 
                 <div class="col-12">
@@ -60,15 +60,18 @@
                                                 {% endif %}
                                             </div>
                                             <div class="RecipeBlock_ShortInfo_Statistics_Comments">
-                                                <p><b>1</b></p>
+                                                <p><b>{{ recipe.comments_count }}</b></p>
                                                 <img src="{% static 'icons/speech-bubble.png' %}" alt="картинка комментариев">
                                             </div>
                                             <div class="RecipeBlock_ShortInfo_Statistics_Saves">
-                                                <p><b>0</b></p>
-                                                <img src="{% static 'icons/save-instagram.png'%}" alt="картинка лайка"
-                                                    class="Usuall">
-                                                <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка лайка"
-                                                    class="Active">
+                                                <p><b>{{ recipe.saves_count }}</b></p>
+                                                {% if recipe.is_saved %}
+                                                <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка сохранения"
+                                                    class="save-image {{ save_style }}" data-recipe-id="{{ recipe.id }}">
+                                                {% else %}
+                                                <img src="{% static 'icons/save-instagram.png'%}" alt="картинка сохранения"
+                                                    class="save-image {{ save_style }}" data-recipe-id="{{ recipe.id }}">
+                                                {% endif %}
                                             </div>
                                         </div>
                                         <form method="post" action="/recipe/">
@@ -87,7 +90,9 @@
         </div>
     </section>
     <footer>@Student Recipes 2023</footer>
+
 <script src="{% static 'js/likes_coments_saves.js' %}"></script>
+
 <script src="{% static 'js/filter.js' %}"></script>
 </body>
 </html>

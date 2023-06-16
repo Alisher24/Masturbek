@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
   function createRecipeCard(recipe) {
     var card = $('<div class="card" style="width: 18rem;">');
@@ -33,19 +34,31 @@ $(document).ready(function() {
     statistics.append(comments);
 
     var saves = $('<div class="RecipeBlock_ShortInfo_Statistics_Saves">');
-    saves.append('<p><b>0</b></p>');
-    saves.append('<img src="/static/icons/save-instagram.png" alt="картинка лайка" class="Usuall">');
-    saves.append('<img src="/static/icons/Active save-instagram.png" alt="картинка лайка" class="Active">');
+    saves.append('<p><b>' + recipe.saves_count + '</b></p>');
+
+    var saveImage = $('<img>').addClass('save-image').attr('src', recipe.is_saved ? '/static/icons/Active save-instagram.png' : '/static/icons/save-instagram.png');
+    saveImage.attr('alt', 'картинка сохранения');
+    saveImage.addClass(recipe.is_saved ? 'Active' : 'Usuall');
+    saveImage.attr('data-recipe-id', recipe.id);
+    saves.append(saveImage);
+
     statistics.append(saves);
 
-    var button = $('<a href="#" class="btn btn-primary">Перейти куда-нибудь</a>');
-    cardBody.append(button);
+    var form = $('<form method="post" action="/recipe/">');
+    form.append('<input type="hidden" name="csrfmiddlewaretoken" value="' + recipe.csrf_token + '">');
+    form.append('<input type="hidden" name="recipe_id" value="' + recipe.id + '">');
+    var button = $('<button type="submit" class="btn btn-primary">Перейти куда-нибудь</button>');
+    form.append(button);
+    cardBody.append(form);
 
     return card;
   }
 
   $('#category-select').change(function() {
     var selectedCategory = $(this).val();
+    var categoryTitle = $('#category-title');
+
+    categoryTitle.text(selectedCategory);
 
     $.ajax({
       url: '/ajax/recipes/',
@@ -67,3 +80,4 @@ $(document).ready(function() {
     });
   });
 });
+

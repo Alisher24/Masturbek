@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap-grid.min.css'%}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}"/>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <div class="logo">
@@ -17,13 +19,49 @@
         <h2>Ваши сохраненные</h2><a href="../" style="text-align: center; display: inherit; margin-bottom: 20px;">вернуться</a>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="Saved_Block">
-                <ol>
-                    <li><a href="#">Жопа Тилека</a></li>
-                </ol>
+        <div class="col-12">
+            <div class="UserRecepies_Recepies">
+                {% for recipe in recipes %}
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ recipe.photo.url }}" class="card-img-top" alt="картинка еды">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ recipe.title }}</h5>
+                            <p class="card-text">{{ recipe.category }}</p>
+                            <div class="RecipeBlock_ShortInfo_Statistics">
+                                <div class="RecipeBlock_ShortInfo_Statistics_Likes">
+                                    <p><b>{{ recipe.likes_count }}</b></p>
+                                    {% if recipe.is_liked %}
+                                        <img src="{% static 'icons/Active heart.png' %}" alt="картинка лайка" class="like-image {{ heart_style }}" data-recipe-id="{{ recipe.id }}">
+                                    {% else %}
+                                        <img src="{% static 'icons/heart.png' %}" alt="картинка лайка" class="like-image {{ heart_style }}" data-recipe-id="{{ recipe.id }}">
+                                    {% endif %}
+                                </div>
+                                <div class="RecipeBlock_ShortInfo_Statistics_Comments">
+                                  <p><b>1</b></p>
+                                  <img src="{% static 'icons/speech-bubble.png' %}" alt="картинка комментариев">
+                                </div>
+                                <div class="RecipeBlock_ShortInfo_Statistics_Saves">
+                                    <p><b>{{ recipe.saves_count }}</b></p>
+                                    {% if recipe.is_saved %}
+                                    <img src="{% static 'icons/Active save-instagram.png'%}" alt="картинка сохранения"
+                                        class="save-image {{ save_style }}" data-recipe-id="{{ recipe.id }}">
+                                    {% else %}
+                                    <img src="{% static 'icons/save-instagram.png'%}" alt="картинка сохранения"
+                                        class="save-image {{ save_style }}" data-recipe-id="{{ recipe.id }}">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <form method="post" action="/recipe/">
+                                {% csrf_token %}
+                                <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
+                                <button type="submit" class="btn btn-primary">Перейти куда-нибудь</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
+<script src="{% static 'js/likes_coments_saves.js' %}"></script>
 </body>
 </html>
